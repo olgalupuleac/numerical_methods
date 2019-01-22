@@ -1,0 +1,71 @@
+\documentclass[12pt,fleqn,a4paper]{article}
+
+\usepackage[russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{ntheorem}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{pstricks}
+\usepackage{dsfont}
+
+
+\usetikzlibrary{positioning}
+\tikzset{main node/.style={circle,fill=blue!20,draw,minimum size=1cm,inner sep=0pt},
+}
+
+
+\sloppy
+
+%\usetikzlibrary{arrows,shapes}
+
+\tikzstyle{vertex}=[circle,fill=black,minimum size=3pt,inner sep=0pt]
+\tikzstyle{edge} = [draw,thick,-]
+
+\newtheorem{definition}{Определение}
+\newtheorem*{solution}{Решение}
+\newtheorem*{answer}{Ответ}
+
+\newenvironment{task}[2] {
+	\noindent\fbox{\bf {#1} {#2}.}
+}{
+}
+
+\newcommand{\mytitle}[2] {
+	\begin{center}
+		\bf {#1} {#2}.
+	\end{center}
+}
+
+\let\origenumerate\enumerate
+\let\origendenumerate\endenumerate
+\renewenvironment{enumerate}{\origenumerate[topsep = 0pt, noitemsep]}{\origendenumerate}
+
+\begin{document}
+	\mytitle{Домашняя работа 1.}{Оценка погрешностей}
+	
+	\begin{task}{}{1}
+	\end{task}
+	\begin{solution}
+	Хотим, чтобы остаток ряда был не больше $\epsilon = 10^{-6}$.
+	
+	Оценим остаток ряда через интеграл (будем считать, что $n$ достаточно большое, и $n^2 > n + z$).
+	
+	$$\sum_{n}^{\infty} \frac{1}{k^2 - k - z} \le \int_{n}^{\infty} \frac{dx}{x^2 - x - z}$$
+	
+	$$\frac{1}{x^2 - x - z} = (\frac{1}{x - x_2} - \frac{1}{x - x_1}) \cdot A,$$ где $x_{1, 2} = \frac{1 \pm \sqrt{1 + 4z}}{2}, \,\,  A = \frac{1}{\sqrt{1 + 4z}}$.
+
+    $$ \int_{n}^{\infty} \frac{dx}{x^2 - x - z} = A( \ln (x - x_2) - \ln(x - x_1)) \bigg{|}_{n}^{\infty} = A \ln \frac{x - x_2}{x - x_1} \bigg{|}_{n}^{\infty} = A \ln \frac{n - x_1}{n - x_2}$$
+    
+    Нам надо подобрать такое $n$, чтобы это выражение было меньше $\epsilon$. Для того, чтобы оценить это $n$ точно, можно использовать бинпоиск.
+    
+    
+	\end{solution}
+	
+	
+	
+	
+\end{document}
