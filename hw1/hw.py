@@ -39,6 +39,6 @@ def plot(w, file_to_save, title=None, func_name=None):
     fig.savefig(file_to_save)
     plt.show()
 
-#plot(wA, 'plot1.png', 'Первая часть первого задания', 'wA(z)')
-#plot(wB, 'plot2.png', 'Вторая часть первого задания', 'wB(z)')
+plot(wA, 'plot1.png', 'Первая часть первого задания', 'wA(z)')
+plot(wB, 'plot2.png', 'Вторая часть первого задания', 'wB(z)')
 plot(lambda z : wA(z) - wB(z), 'plot3.png', 'Третья часть первого задания', 'wA(z) - wB(z)')
